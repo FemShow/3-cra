@@ -1,0 +1,47 @@
+{
+    "$schema": "https://purl.org/csv-cubed/qube-config/v1",
+    "title": "Total Company & Other Corporate body Types Analysis",
+    "summary": "Register size in the United Kingdom by corporate body type, 2003-04 to 2021-22",
+    "description": "1. Unless otherwise stated, Companies refers to companies registered under the Companies Act 2006. 2. Descriptions relating to other corporate body types can be found in the accompanying document: Definitions to accompany Companies House official statistics releases (https://www.gov.uk/government/publications/definitions-to-accompany-our-statistical-releases). 4. '-' Denotes there were no registrations for the specific company or corporate body type during the period. 5. * Total companies on the register include trading and dormant Private, Private Unlimited and Public Limited Companies in the course of dissolution, in liquidation and in receivership (excluding dissolved, closed and proposed companies). 6. Years 2004 to 2015 are a snapshot as at 1 January. Years 2016 onwards are a snapshot as at 31 March. 8. The Legislative Reform (Private Fund Limited Partnerships) Order 2017, which came into force on 6th April 2017, introduced the Private Fund Limited Partnership. Figures for which are included in the above. 9. Following the introduction of the Co-operative and Community Benefit Societies Act 2014 (2016 Act for Northern Ireland), all societies registered under the Industrial and Provident Societies Act 1965 (or its predecessors) have now legally been merged with 'Registered Societies'.10. Scottish Partnerships came in under The Scottish Partnerships (Register of People with Significant Control) Regulations 2017, and came into force on 24th July 2017. 11. Due to United Kingdom's exit from the European Union the majority of Europeans EEIGs and Europeans SEs became part of the United Kingdom Economic Interest Grouping and United Kingdom Societas. 12. Discrepancies may be experienced when comparing data across other tables within this report. This is due to scheduling variations when extracting the data. 13. Companies registered in the Channel Islands and the Isle of Man are excluded from the UK Companies Register.R. Figures were found to be missing or incorrect, and have been revised accordingly.",
+    "license": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "public_contact_point_uri": "mailto:statistics@companieshouse.gov.uk",
+    "themes": "https://www.ons.gov.uk/economy/economicoutputandproductivity",
+    "publisher": "https://www.gov.uk/government/organisations/companies-house",
+    "creator": "https://www.gov.uk/government/organisations/companies-house",
+    "dataset_issued": "2022-03-31T00:00:00Z",
+    "dataset_modified": "2022-03-31T00:00:00Z",
+    "keywords": [
+        "companies",
+        "companieshouse",
+        "liability",
+        "limited",
+        "company",
+        "corporate" 
+    ],
+    "columns":{
+        "Corporate body type":{
+            "type": "dimension",
+            "label": "Corporate body type"
+         },
+        "Year":{
+            "from_template": "government-year"
+          },
+        "Value": {
+            "type": "observations",
+            "measure": {
+              "label": "Value",
+              "description": "Number of Companies",
+              "from_existing": "https://purl.org/csv-cubed/resources/measures#count-of-companies"
+            },
+            "data_type": "integer",
+            "unit": {
+              "label": "Number",
+              "from_existing": "http://qudt.org/vocab/unit/NUM"
+            }
+          },
+        "Value_obsStatus":{
+            "from_template": "observation-status",
+            "describes_observations": "Value"
+        }
+    }
+}

@@ -1,0 +1,687 @@
+{
+    "@context": "http://www.w3.org/ns/csvw",
+    "@id": "total-company-other-corporate-body-types-analysis.csv#dataset",
+    "tables": [
+        {
+            "url": "total-company-other-corporate-body-types-analysis.csv",
+            "tableSchema": {
+                "columns": [
+                    {
+                        "titles": "Corporate body type",
+                        "name": "corporate_body_type",
+                        "propertyUrl": "total-company-other-corporate-body-types-analysis.csv#dimension/corporate-body-type",
+                        "valueUrl": "corporate-body-type.csv#{+corporate_body_type}",
+                        "required": true
+                    },
+                    {
+                        "titles": "Year",
+                        "name": "year",
+                        "propertyUrl": "total-company-other-corporate-body-types-analysis.csv#dimension/government-year",
+                        "valueUrl": "government-year.csv#{+year}",
+                        "required": true
+                    },
+                    {
+                        "titles": "Value",
+                        "name": "value",
+                        "aboutUrl": "total-company-other-corporate-body-types-analysis.csv#obs/{corporate_body_type},{year}@value",
+                        "propertyUrl": "total-company-other-corporate-body-types-analysis.csv#measure/value",
+                        "datatype": "integer",
+                        "required": false
+                    },
+                    {
+                        "titles": "Value_obsStatus",
+                        "name": "value_obsstatus",
+                        "aboutUrl": "total-company-other-corporate-body-types-analysis.csv#obs/{corporate_body_type},{year}@value",
+                        "propertyUrl": "total-company-other-corporate-body-types-analysis.csv#attribute/observation-status",
+                        "valueUrl": "total-company-other-corporate-body-types-analysis.csv#attribute/observation-status/{+value_obsstatus}",
+                        "required": false
+                    },
+                    {
+                        "name": "virt_slice",
+                        "virtual": true,
+                        "propertyUrl": "rdf:type",
+                        "valueUrl": "qb:Slice"
+                    },
+                    {
+                        "name": "virt_slice_structure",
+                        "virtual": true,
+                        "propertyUrl": "qb:sliceStructure",
+                        "valueUrl": "total-company-other-corporate-body-types-analysis.csv#slice/cross-measures"
+                    },
+                    {
+                        "name": "virt_obs_value",
+                        "virtual": true,
+                        "propertyUrl": "qb:observation",
+                        "valueUrl": "total-company-other-corporate-body-types-analysis.csv#obs/{corporate_body_type},{year}@value"
+                    },
+                    {
+                        "name": "virt_obs_value_meas",
+                        "virtual": true,
+                        "aboutUrl": "total-company-other-corporate-body-types-analysis.csv#obs/{corporate_body_type},{year}@value",
+                        "propertyUrl": "qb:measureType",
+                        "valueUrl": "total-company-other-corporate-body-types-analysis.csv#measure/value"
+                    },
+                    {
+                        "name": "virt_obs_value_unit",
+                        "virtual": true,
+                        "aboutUrl": "total-company-other-corporate-body-types-analysis.csv#obs/{corporate_body_type},{year}@value",
+                        "propertyUrl": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure",
+                        "valueUrl": "total-company-other-corporate-body-types-analysis.csv#unit/number"
+                    },
+                    {
+                        "name": "virt_dim_value_corporate_body_type",
+                        "virtual": true,
+                        "aboutUrl": "total-company-other-corporate-body-types-analysis.csv#obs/{corporate_body_type},{year}@value",
+                        "propertyUrl": "total-company-other-corporate-body-types-analysis.csv#dimension/corporate-body-type",
+                        "valueUrl": "corporate-body-type.csv#{+corporate_body_type}"
+                    },
+                    {
+                        "name": "virt_dim_value_year",
+                        "virtual": true,
+                        "aboutUrl": "total-company-other-corporate-body-types-analysis.csv#obs/{corporate_body_type},{year}@value",
+                        "propertyUrl": "total-company-other-corporate-body-types-analysis.csv#dimension/government-year",
+                        "valueUrl": "government-year.csv#{+year}"
+                    },
+                    {
+                        "name": "virt_obs_value_type",
+                        "virtual": true,
+                        "aboutUrl": "total-company-other-corporate-body-types-analysis.csv#obs/{corporate_body_type},{year}@value",
+                        "propertyUrl": "rdf:type",
+                        "valueUrl": "qb:Observation"
+                    },
+                    {
+                        "name": "virt_dataSet_value",
+                        "virtual": true,
+                        "aboutUrl": "total-company-other-corporate-body-types-analysis.csv#obs/{corporate_body_type},{year}@value",
+                        "propertyUrl": "qb:dataSet",
+                        "valueUrl": "total-company-other-corporate-body-types-analysis.csv#dataset"
+                    }
+                ],
+                "foreignKeys": [
+                    {
+                        "columnReference": "corporate_body_type",
+                        "reference": {
+                            "resource": "corporate-body-type.csv",
+                            "columnReference": "uri_identifier"
+                        }
+                    },
+                    {
+                        "columnReference": "year",
+                        "reference": {
+                            "resource": "government-year.csv",
+                            "columnReference": "uri_identifier"
+                        }
+                    }
+                ],
+                "primaryKey": [
+                    "corporate_body_type",
+                    "year"
+                ],
+                "aboutUrl": "total-company-other-corporate-body-types-analysis.csv#slice/{corporate_body_type},{year}"
+            }
+        },
+        {
+            "url": "corporate-body-type.csv",
+            "tableSchema": "corporate-body-type.table.json",
+            "suppressOutput": true
+        },
+        {
+            "url": "government-year.csv",
+            "tableSchema": "government-year.table.json",
+            "suppressOutput": true
+        }
+    ],
+    "rdfs:seeAlso": [
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#dimension/corporate-body-type",
+            "@type": [
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+                "http://purl.org/linked-data/cube#CodedProperty",
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#DimensionProperty"
+            ],
+            "http://purl.org/linked-data/cube#codeList": [
+                {
+                    "@id": "corporate-body-type.csv#code-list"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Corporate body type"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#range": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#class/corporate-body-type"
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#attribute/observation-status",
+            "@type": [
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+                "http://purl.org/linked-data/cube#AttributeProperty",
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Observation Status"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/attribute#obsStatus"
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#measure/value",
+            "@type": [
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://purl.org/linked-data/cube#MeasureProperty",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of Companies"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Value"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#range": [
+                {
+                    "@id": "http://www.w3.org/2001/XMLSchema#integer"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+                {
+                    "@id": "https://purl.org/csv-cubed/resources/measures#count-of-companies"
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#csvcubed-build-activity",
+            "@type": [
+                "http://www.w3.org/ns/prov#Activity",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://www.w3.org/ns/prov#used": [
+                {
+                    "@id": "https://github.com/GSS-Cogs/csvcubed/releases/tag/v0.4.4"
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#structure",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://purl.org/linked-data/cube#DataStructureDefinition",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://purl.org/linked-data/cube#component": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#component/government-year"
+                },
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#component/corporate-body-type"
+                },
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#component/value"
+                },
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#component/observation-status"
+                },
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#component/measure-type"
+                },
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#component/unit"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"
+                },
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#dimension/government-year"
+                },
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#measure/value"
+                },
+                {
+                    "@id": "http://purl.org/linked-data/cube#measureType"
+                },
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#dimension/corporate-body-type"
+                },
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#attribute/observation-status"
+                }
+            ],
+            "http://purl.org/linked-data/cube#sliceKey": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#slice/cross-measures"
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#component/corporate-body-type",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#dimension/corporate-body-type"
+                }
+            ],
+            "http://purl.org/linked-data/cube#dimension": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#dimension/corporate-body-type"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 1
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#slice/cross-measures",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://purl.org/linked-data/cube#SliceKey",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#dimension/corporate-body-type"
+                },
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#dimension/government-year"
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#component/measure-type",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "http://purl.org/linked-data/cube#measureType"
+                }
+            ],
+            "http://purl.org/linked-data/cube#dimension": [
+                {
+                    "@id": "http://purl.org/linked-data/cube#measureType"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 3
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#component/unit",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://purl.org/linked-data/cube#attribute": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentRequired": [
+                {
+                    "@value": true
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 4
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#class/government-year",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Class",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#dimension/government-year",
+            "@type": [
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+                "http://purl.org/linked-data/cube#CodedProperty",
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#DimensionProperty"
+            ],
+            "http://purl.org/linked-data/cube#codeList": [
+                {
+                    "@id": "government-year.csv#code-list"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Government Year"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#range": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#class/government-year"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod"
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#component/value",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#measure/value"
+                }
+            ],
+            "http://purl.org/linked-data/cube#measure": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#measure/value"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 5
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#class/corporate-body-type",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Class",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#component/observation-status",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://purl.org/linked-data/cube#attribute": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#attribute/observation-status"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#attribute/observation-status"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentRequired": [
+                {
+                    "@value": false
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 6
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#component/government-year",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#dimension/government-year"
+                }
+            ],
+            "http://purl.org/linked-data/cube#dimension": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#dimension/government-year"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 2
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#dataset",
+            "@type": [
+                "http://purl.org/linked-data/cube#Attachable",
+                "http://purl.org/linked-data/cube#DataSet",
+                "http://www.w3.org/ns/dcat#Resource",
+                "http://www.w3.org/ns/dcat#Dataset",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://purl.org/dc/terms/creator": [
+                {
+                    "@id": "https://www.gov.uk/government/organisations/companies-house"
+                }
+            ],
+            "http://purl.org/dc/terms/description": [
+                {
+                    "@type": "https://www.w3.org/ns/iana/media-types/text/markdown#Resource",
+                    "@value": "1. Unless otherwise stated, Companies refers to companies registered under the Companies Act 2006. 2. Descriptions relating to other corporate body types can be found in the accompanying document: Definitions to accompany Companies House official statistics releases (https://www.gov.uk/government/publications/definitions-to-accompany-our-statistical-releases). 4. '-' Denotes there were no registrations for the specific company or corporate body type during the period. 5. * Total companies on the register include trading and dormant Private, Private Unlimited and Public Limited Companies in the course of dissolution, in liquidation and in receivership (excluding dissolved, closed and proposed companies). 6. Years 2004 to 2015 are a snapshot as at 1 January. Years 2016 onwards are a snapshot as at 31 March. 8. The Legislative Reform (Private Fund Limited Partnerships) Order 2017, which came into force on 6th April 2017, introduced the Private Fund Limited Partnership. Figures for which are included in the above. 9. Following the introduction of the Co-operative and Community Benefit Societies Act 2014 (2016 Act for Northern Ireland), all societies registered under the Industrial and Provident Societies Act 1965 (or its predecessors) have now legally been merged with 'Registered Societies'.10. Scottish Partnerships came in under The Scottish Partnerships (Register of People with Significant Control) Regulations 2017, and came into force on 24th July 2017. 11. Due to United Kingdom's exit from the European Union the majority of Europeans EEIGs and Europeans SEs became part of the United Kingdom Economic Interest Grouping and United Kingdom Societas. 12. Discrepancies may be experienced when comparing data across other tables within this report. This is due to scheduling variations when extracting the data. 13. Companies registered in the Channel Islands and the Isle of Man are excluded from the UK Companies Register.R. Figures were found to be missing or incorrect, and have been revised accordingly."
+                }
+            ],
+            "http://purl.org/dc/terms/identifier": [
+                {
+                    "@value": "Total Company & Other Corporate body Types Analysis"
+                }
+            ],
+            "http://purl.org/dc/terms/issued": [
+                {
+                    "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                    "@value": "2022-03-31T00:00:00"
+                }
+            ],
+            "http://purl.org/dc/terms/license": [
+                {
+                    "@id": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+                }
+            ],
+            "http://purl.org/dc/terms/modified": [
+                {
+                    "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                    "@value": "2022-03-31T00:00:00"
+                }
+            ],
+            "http://purl.org/dc/terms/publisher": [
+                {
+                    "@id": "https://www.gov.uk/government/organisations/companies-house"
+                }
+            ],
+            "http://purl.org/dc/terms/title": [
+                {
+                    "@language": "en",
+                    "@value": "Total Company & Other Corporate body Types Analysis"
+                }
+            ],
+            "http://purl.org/linked-data/cube#structure": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#structure"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#comment": [
+                {
+                    "@language": "en",
+                    "@value": "Register size in the United Kingdom by corporate body type, 2003-04 to 2021-22"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Total Company & Other Corporate body Types Analysis"
+                }
+            ],
+            "http://www.w3.org/ns/dcat#keyword": [
+                {
+                    "@language": "en",
+                    "@value": "limited"
+                },
+                {
+                    "@language": "en",
+                    "@value": "companies"
+                },
+                {
+                    "@language": "en",
+                    "@value": "corporate"
+                },
+                {
+                    "@language": "en",
+                    "@value": "companieshouse"
+                },
+                {
+                    "@language": "en",
+                    "@value": "company"
+                },
+                {
+                    "@language": "en",
+                    "@value": "liability"
+                }
+            ],
+            "http://www.w3.org/ns/dcat#theme": [
+                {
+                    "@id": "https://www.ons.gov.uk/economy/economicoutputandproductivity"
+                }
+            ],
+            "http://www.w3.org/ns/prov#wasGeneratedBy": [
+                {
+                    "@id": "total-company-other-corporate-body-types-analysis.csv#csvcubed-build-activity"
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#dependency/corporate-body-type",
+            "@type": [
+                "http://rdfs.org/ns/void#Dataset",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://rdfs.org/ns/void#dataDump": [
+                {
+                    "@id": "./corporate-body-type.csv-metadata.json"
+                }
+            ],
+            "http://rdfs.org/ns/void#uriSpace": [
+                {
+                    "@value": "corporate-body-type.csv#"
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#dependency/government-year",
+            "@type": [
+                "http://rdfs.org/ns/void#Dataset",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://rdfs.org/ns/void#dataDump": [
+                {
+                    "@id": "./government-year.csv-metadata.json"
+                }
+            ],
+            "http://rdfs.org/ns/void#uriSpace": [
+                {
+                    "@value": "government-year.csv#"
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#attribute/observation-status/r",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "R"
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#attribute/observation-status/z",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "z"
+                }
+            ]
+        },
+        {
+            "@id": "total-company-other-corporate-body-types-analysis.csv#unit/number",
+            "@type": [
+                "http://www.ontology-of-units-of-measure.org/resource/om-2/Unit",
+                "http://qudt.org/schema/qudt/Unit",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://qudt.org/schema/qudt/isScalingOf": [
+                {
+                    "@id": "http://qudt.org/vocab/unit/NUM"
+                }
+            ],
+            "http://www.ontology-of-units-of-measure.org/resource/om-2/hasFactor": [
+                {
+                    "@type": "http://www.w3.org/2001/XMLSchema#float",
+                    "@value": "1.0"
+                }
+            ],
+            "http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit": [
+                {
+                    "@id": "http://qudt.org/vocab/unit/NUM"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+                {
+                    "@id": "http://qudt.org/vocab/unit/NUM"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Number"
+                }
+            ]
+        }
+    ]
+}
